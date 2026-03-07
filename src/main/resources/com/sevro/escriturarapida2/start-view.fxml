@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER"
+      spacing="20"
+      prefWidth="600" prefHeight="500"
+      style="-fx-background-color: linear-gradient(to bottom, #1A0A2E, #0D0D0D);"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sevro.escriturarapida2.controller.StartController">
+
+    <children>
+
+        <!-- Logo -->
+        <Label text="Type_shi.®"
+               style="-fx-text-fill: #F0F0F0;
+                      -fx-font-family: Consolas;
+                      -fx-font-size: 36;
+                      -fx-font-weight: bold;">
+            <VBox.margin>
+                <Insets bottom="40" />
+            </VBox.margin>
+        </Label>
+
+        <!-- Subtítulo -->
+        <Label text="¿Listo para jugar?"
+               style="-fx-text-fill: #A855F7;
+                      -fx-font-family: Consolas;
+                      -fx-font-size: 20;" />
+
+        <!-- Botón jugar -->
+        <Button fx:id="playButton"
+                text="Jugar"
+                textFill="WHITE"
+                mnemonicParsing="false"
+                onAction="#handlePlay"
+                style="-fx-background-color: #7B2FBE;
+                       -fx-border-width: 2;
+                       -fx-border-radius: 6;
+                       -fx-border-color: #A855F7;
+                       -fx-background-radius: 6;
+                       -fx-padding: 8 24 8 24;">
+            <VBox.margin>
+                <Insets top="40" />
+            </VBox.margin>
+        </Button>
+
+    </children>
+
+    <padding>
+        <Insets top="40" bottom="40" left="40" right="40" />
+    </padding>
+
+</VBox>
