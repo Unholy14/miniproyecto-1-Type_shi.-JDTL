@@ -131,21 +131,21 @@ public class GameController implements Initializable, IGameEventHandler {
 
         if (correct) {
             timer.stop();
+            long elapsed = (System.currentTimeMillis() - levelStartTime) / 1000;
+            if (elapsed <= GameModel.COMBO_THRESHOLD) {
+                model.increaseCombo();
+            } else {
+                model.decreaseCombo();
+            }
+            updateCombo();
             model.advanceLevel();
             levelLabel.setText("Nivel: " + model.getCurrentLevel());
             wordLabel.setText(model.getCurrentWord());
             answerField.clear();
             timerLabel.setText(String.format("00:%02d", model.getCurrentTime()));
             startTimer();
-            long elapsed = (System.currentTimeMillis() - levelStartTime) / 1000;
-            if (elapsed <= GameModel.COMBO_THRESHOLD) {
-                model.increaseCombo();
-                updateCombo();
-            } else {
-                model.decreaseCombo();
-                updateCombo();
-            }
-        } else {
+        }
+        else {
             timer.stop();
             showGameOver("¡Incorrecto! Era: " + model.getCurrentWord());
             model.resetCombo();
