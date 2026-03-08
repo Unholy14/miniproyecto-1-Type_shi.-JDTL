@@ -35,6 +35,8 @@ public class GameController implements Initializable, IGameEventHandler {
     private GameModel model;
     private Timeline timer;
     private long levelStartTime;
+    private Timeline comboTimer;
+    private Timeline shrinkAnimation;
 
     /**
      * Called automatically by JavaFX after the FXML is loaded.
@@ -69,6 +71,7 @@ public class GameController implements Initializable, IGameEventHandler {
         restartButton.setOnMouseReleased(restartAdapter::onMouseReleased);
 
         startTimer();
+        startComboTimer();
     }
 
     /**
@@ -117,6 +120,7 @@ public class GameController implements Initializable, IGameEventHandler {
         feedbackLabel.setText("Niveles completados: " + (model.getCurrentLevel() - 1));
         feedbackLabel.setVisible(true);
         restartButton.setVisible(true);
+        if (comboTimer != null) comboTimer.stop();
     }
 
     /**
@@ -152,6 +156,18 @@ public class GameController implements Initializable, IGameEventHandler {
             updateCombo();
         }
     }
+    private void startComboTimer() {
+        if (comboTimer != null) {
+            comboTimer.stop();
+        }
+        comboTimer = new Timeline(new KeyFrame(Duration.seconds(GameModel.COMBO_THRESHOLD), e -> {
+            model.decreaseCombo();
+            updateCombo();
+            startComboTimer();
+        }));
+        comboTimer.setCycleCount(1);
+        comboTimer.play();
+    }
 
     /**
      * Updates the combo label text and color based on the current rank.
@@ -170,8 +186,46 @@ public class GameController implements Initializable, IGameEventHandler {
             case "SSS" -> "#a29bfe";
             default -> "#ffffff";
         };
-        comboLabel.setStyle(comboLabel.getStyle()
-                .replaceAll("-fx-text-fill: #[a-fA-F0-9]+;", "-fx-text-fill: " + color + ";"));
+
+        int targetSize = switch (rank) {
+            case "D" -> 36;
+            case "C" -> 42;
+            case "B" -> 48;
+            case "A" -> 56;
+            case "S" -> 64;
+            case "SS" -> 72;
+            case "SSS" -> 82;
+            default -> 36;
+        };
+
+        comboLabel.setStyle(
+                "-fx-text-fill: " + color + ";" +
+                        "-fx-font-family: Consolas;" +
+                        "-fx-font-size: " + (targetSize + 30) + ";" +
+                        "-fx-font-weight: bold;"
+        );
+
+        if (shrinkAnimation != null) shrinkAnimation.stop();
+
+        int[] currentSize = {targetSize + 30};
+        String finalColor = color;
+        int finalTargetSize = targetSize;
+
+        shrinkAnimation = new Timeline(new KeyFrame(Duration.millis(30), e -> {
+            if (currentSize[0] > finalTargetSize) {
+                currentSize[0] -= 2;
+                comboLabel.setStyle(
+                        "-fx-text-fill: " + finalColor + ";" +
+                                "-fx-font-family: Consolas;" +
+                                "-fx-font-size: " + currentSize[0] + ";" +
+                                "-fx-font-weight: bold;"
+                );
+            } else {
+                shrinkAnimation.stop();
+            }
+        }));
+        shrinkAnimation.setCycleCount(Timeline.INDEFINITE);
+        shrinkAnimation.play();
     }
 
     /**
@@ -202,6 +256,7 @@ public class GameController implements Initializable, IGameEventHandler {
         levelLabel.setText("Nivel: 1");
         timerLabel.setText("00:20");
         startTimer();
+        startComboTimer();
     }
 
     /**

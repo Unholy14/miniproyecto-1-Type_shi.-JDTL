@@ -41,7 +41,7 @@ public class GameModel {
     public static final String[] COMBO_RANKS = {"D", "C", "B", "A", "S", "SS", "SSS"};
 
     /** Time threshold in seconds to increase combo. */
-    public static final int COMBO_THRESHOLD = 3;
+    public static final int COMBO_THRESHOLD = 5;
 
     private int comboIndex;
 
