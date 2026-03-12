@@ -1,7 +1,6 @@
 package com.sevro.escriturarapida2.controller;
 
 import com.sevro.escriturarapida2.view.GameStage;
-import com.sevro.escriturarapida2.view.StartStage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,6 +17,16 @@ import java.util.ResourceBundle;
 public class StartController implements Initializable {
 
     @FXML private Button playButton;
+    private final Stage stage;
+
+    /**
+     * Constructs a StartController with the given stage.
+     *
+     * @param stage the primary stage
+     */
+    public StartController(Stage stage) {
+        this.stage = stage;
+    }
 
     /**
      * Called automatically by JavaFX after the FXML is loaded.
@@ -27,7 +36,6 @@ public class StartController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // hover effects on play button
         playButton.setOnMouseEntered(e -> playButton.setStyle(
                 playButton.getStyle() + "-fx-opacity: 0.8;"
         ));
@@ -38,12 +46,10 @@ public class StartController implements Initializable {
 
     /**
      * Handles the Jugar button click.
-     * Opens the game screen and closes the start screen.
+     * Switches the scene to the game view.
      */
     @FXML
     private void handlePlay() throws IOException {
-        new GameStage();
-        Stage stage = (Stage) playButton.getScene().getWindow();
-        stage.close();
+        new GameStage(stage);
     }
 }

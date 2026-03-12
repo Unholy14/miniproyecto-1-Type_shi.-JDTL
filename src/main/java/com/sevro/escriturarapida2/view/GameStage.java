@@ -9,23 +9,22 @@ import java.io.IOException;
 
 /**
  * Represents the main game stage of the application.
- * Loads and displays the game view FXML.
+ * Loads and displays the game view FXML on the provided stage.
  */
-public class GameStage extends Stage {
+public class GameStage {
 
     /**
-     * Constructs the GameStage, loads the FXML and configures the window.
+     * Constructs the GameStage and displays the game view on the given stage.
      *
+     * @param stage the primary stage to use
      * @throws IOException if the FXML file cannot be loaded
      */
-    public GameStage() throws IOException {
+    public GameStage(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/com/sevro/escriturarapida2/game-view.fxml")
         );
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        setTitle("Type_shi.");
-        setScene(scene);
-        show();
+        stage.setScene(scene);
     }
 }

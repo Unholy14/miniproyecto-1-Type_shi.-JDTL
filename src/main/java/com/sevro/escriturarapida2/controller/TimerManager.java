@@ -7,7 +7,10 @@ import javafx.animation.Timeline;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-
+/**
+ * Manages the game countdown timer.
+ * Notifies a listener on each tick and when time runs out.
+ */
 public class TimerManager {
     private final GameModel model;
     private final Label timerLabel;

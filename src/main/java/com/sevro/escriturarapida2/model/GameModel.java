@@ -89,6 +89,7 @@ public class GameModel {
         timePerLevel = INITIAL_TIME;
         currentTime = INITIAL_TIME;
         currentWord = "";
+        comboIndex = 0;
     }
 
     /**
@@ -127,12 +128,9 @@ public class GameModel {
 
     /**
      * Decrements the timer by one second.
-     *
-     * @return true if time has run out
      */
-    public boolean tickTimer() {
+    public void tickTimer() {
         currentTime--;
-        return currentTime <= 0;
     }
 
     /**
@@ -144,6 +142,9 @@ public class GameModel {
         }
     }
 
+    /**
+     * Decreases the combo rank by one level if not already at minimum.
+     */
     public void decreaseCombo() {
         if (comboIndex > 0) {
             comboIndex--;

@@ -1,18 +1,9 @@
 package com.sevro.escriturarapida2;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 import com.sevro.escriturarapida2.view.StartStage;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * Entry point for the "Escritura Rapida" JavaFX application.
@@ -37,6 +28,9 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        new StartStage();
+        primaryStage.getIcons().add(new javafx.scene.image.Image(
+                Main.class.getResourceAsStream("/com/sevro/escriturarapida2/Icon.png")
+        ));
+        new StartStage(primaryStage);
     }
 }

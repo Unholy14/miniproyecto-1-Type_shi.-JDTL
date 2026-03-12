@@ -74,8 +74,6 @@ public class GameController implements Initializable, IGameEventHandler, ITimerL
         levelStartTime = System.currentTimeMillis();
     }
 
-
-
     @Override
     public void onTick() {
         model.tickTimer();
@@ -97,8 +95,6 @@ public class GameController implements Initializable, IGameEventHandler, ITimerL
             onTimeOut();
         }
     }
-
-
 
     @Override
     public void onAnswerSubmitted() {
@@ -156,8 +152,6 @@ public class GameController implements Initializable, IGameEventHandler, ITimerL
     private void handleRestart() {
         onRestart();
     }
-
-
 
     /**
      * Inner class that extends MouseAdapter to provide hover and press
