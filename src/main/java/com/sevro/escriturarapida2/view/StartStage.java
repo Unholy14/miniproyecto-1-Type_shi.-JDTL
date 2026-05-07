@@ -8,7 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import com.sevro.escriturarapida2.controller.StartController;
 
-
+/**
+ * Represents the start stage of the application.
+ * Loads and displays the start view before transitioning to the game.
+ */
 public class StartStage {
 
     private final Stage stage;

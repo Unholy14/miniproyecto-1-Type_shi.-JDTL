@@ -1,72 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER"
-      spacing="20"
-      prefWidth="600" prefHeight="500"
-      style="-fx-background-color: linear-gradient(to bottom, #1A0A2E, #0D0D0D);"
-      xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.sevro.escriturarapida2.controller.GameController">
+<VBox alignment="CENTER" prefHeight="500" prefWidth="600" spacing="20" style="-fx-background-color: linear-gradient(to bottom, #1A0A2E, #0D0D0D);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sevro.escriturarapida2.controller.GameController">
 
    <children>
 
       <!-- Logo -->
-      <Label text="Type_shi.®"
-             style="-fx-text-fill: #F0F0F0;
-                    -fx-font-family: Consolas;
-                    -fx-font-size: 36;
-                    -fx-font-weight: bold;"
-             VBox.vgrow="ALWAYS">
+      <Label style="-fx-text-fill: #F0F0F0;                     -fx-font-family: Consolas;                     -fx-font-size: 36;                     -fx-font-weight: bold;" text="Type_shi.®" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets bottom="60" />
          </VBox.margin>
       </Label>
 
       <!-- Palabra -->
-      <Label fx:id="wordLabel"
-             text=""
-             maxWidth="Infinity"
-             alignment="CENTER"
-             style="-fx-text-fill: #A855F7;
-                    -fx-font-family: Consolas;
-                    -fx-font-size: 36;
-                    -fx-font-weight: bold;" />
+      <Label fx:id="wordLabel" alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #A855F7;                     -fx-font-family: Consolas;                     -fx-font-size: 36;                     -fx-font-weight: bold;" text="" />
 
       <!-- Campo de texto -->
-      <TextField fx:id="answerField"
-                 prefWidth="220"
-                 maxWidth="220"
-                 style="-fx-background-color: #b67fd4;
-                        -fx-font-family: Consolas;
-                        -fx-font-size: 16;" />
+      <TextField fx:id="answerField" alignment="CENTER" maxWidth="220" prefWidth="220" promptText="Escribe aquí" style="-fx-background-color: #b67fd4;                         -fx-font-family: Consolas;                         -fx-font-size: 16;" />
 
       <!-- Timer -->
-      <Label fx:id="timerLabel"
-             text="00:20"
-             maxWidth="Infinity"
-             alignment="CENTER"
-             style="-fx-text-fill: #D8B4FE;
-                    -fx-font-family: Consolas;
-                    -fx-font-size: 36;
-                    -fx-font-weight: bold;" />
+      <Label fx:id="timerLabel" alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #D8B4FE;                     -fx-font-family: Consolas;                     -fx-font-size: 36;                     -fx-font-weight: bold;" text="00:20" />
 
       <!-- Botón -->
-      <Button fx:id="confirmButton"
-              text="Confirmar"
-              textFill="WHITE"
-              mnemonicParsing="false"
-              onAction="#handleConfirm"
-              style="-fx-background-color: #7B2FBE;
-                     -fx-border-width: 2;
-                     -fx-border-radius: 6;
-                     -fx-border-color: #A855F7;
-                     -fx-background-radius: 6;
-                     -fx-padding: 8 24 8 24;"
-              VBox.vgrow="ALWAYS">
+      <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#handleConfirm" style="-fx-background-color: #7B2FBE;                      -fx-border-width: 2;                      -fx-border-radius: 6;                      -fx-border-color: #A855F7;                      -fx-background-radius: 6;                      -fx-padding: 8 24 8 24;" text="Confirmar" textFill="WHITE" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets top="60" />
          </VBox.margin>
@@ -74,52 +33,20 @@
 
 
       <!-- Game Over -->
-      <Label fx:id="feedbackLabel"
-             text=""
-             maxWidth="Infinity"
-             alignment="CENTER"
-             visible="false"
-             style="-fx-text-fill: #ff6b6b;
-              -fx-font-family: Consolas;
-              -fx-font-size: 18;
-              -fx-font-weight: bold;" />
+      <Label fx:id="feedbackLabel" alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #ff6b6b;               -fx-font-family: Consolas;               -fx-font-size: 18;               -fx-font-weight: bold;" text="" visible="false" />
 
-      <Button fx:id="restartButton"
-              text="Reiniciar"
-              textFill="WHITE"
-              mnemonicParsing="false"
-              visible="false"
-              onAction="#handleRestart"
-              style="-fx-background-color: #7B2FBE;
-               -fx-border-width: 2;
-               -fx-border-radius: 6;
-               -fx-border-color: #A855F7;
-               -fx-background-radius: 6;
-               -fx-padding: 8 24 8 24;" />
+      <Button fx:id="restartButton" mnemonicParsing="false" onAction="#handleRestart" style="-fx-background-color: #7B2FBE;                -fx-border-width: 2;                -fx-border-radius: 6;                -fx-border-color: #A855F7;                -fx-background-radius: 6;                -fx-padding: 8 24 8 24;" text="Reiniciar" textFill="WHITE" visible="false" />
 
 
       <!-- Nivel -->
-      <Label fx:id="levelLabel"
-             text="Nivel: 1"
-             maxWidth="Infinity"
-             alignment="CENTER"
-             style="-fx-text-fill: #aaaacc;
-              -fx-font-family: Consolas;
-              -fx-font-size: 16;" />
+      <Label fx:id="levelLabel" alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #aaaacc;               -fx-font-family: Consolas;               -fx-font-size: 16;" text="Nivel: 1" />
 
       <!-- Combo -->
-      <Label fx:id="comboLabel"
-             text="D"
-             maxWidth="Infinity"
-             alignment="CENTER"
-             style="-fx-text-fill: #ffffff;
-              -fx-font-family: Consolas;
-              -fx-font-size: 48;
-              -fx-font-weight: bold;" />
+      <Label fx:id="comboLabel" alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #ffffff;               -fx-font-family: Consolas;               -fx-font-size: 48;               -fx-font-weight: bold;" text="D" />
    </children>
 
    <padding>
-      <Insets top="40" bottom="40" left="40" right="40" />
+      <Insets bottom="40" left="40" right="40" top="40" />
    </padding>
 
 </VBox>
